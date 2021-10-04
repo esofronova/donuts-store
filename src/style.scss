@@ -1,0 +1,119 @@
+.donuts-store {
+  font-family: "Kaushan Script";
+  top: 0;
+
+  .text-pink { color: #ef7998 !important; }
+
+  .hovered {
+    &:hover, &.active {
+      color: #ef7998;
+      background-color: black !important;
+      transition: 0.5s;
+    }
+  }
+
+  a, button {  transition: 0.3s; }
+
+  .logo { cursor: pointer; }
+
+  .navbar {
+    z-index: 10;
+    height: 70px;
+
+    a {
+      box-shadow: none;
+
+      &:hover { color: black !important; }
+    }
+
+    .fixed {
+      position: fixed;
+      right: 1em;
+    }
+  }
+
+  .shopping-cart {
+    top: 70px;
+    right: 0;
+    z-index: 10;
+    border-radius: 0 0 0.6rem 0.6rem;
+
+    .remove {
+      cursor: pointer;
+      transition: 1s;
+
+      &:hover { color: black !important; }
+    }
+  }
+
+  .body {
+    .welcome {
+      background: url("https://js-beginners.github.io/filter-project/img/headerBcg.jpeg") center/cover fixed no-repeat;
+      min-height: 45em;
+
+      h1 { font-size: 3.5em; }
+    }
+
+    .about {
+      .img-frame {
+        &::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          outline: 0.5em solid rgb(249, 228, 148);
+          z-index: -1;
+          transition: all 1s ease-in-out;
+          left: -1.5em;
+          top: -1.5em;
+        }
+
+        &:hover:before {
+          left: 0;
+          top: 0;
+        }
+      }
+    }
+
+    .store {
+      background-color: #eee;
+      
+      .item {
+        .img-container {
+          height: 19em;
+          cursor: pointer;
+
+          img { transition: 1s ease-in-out; 
+          
+            &:hover {
+              width: 115% !important;
+              height: 115% !important;
+              margin-left: -5%;
+              margin-top: -5%;
+            }
+          }
+        }
+
+          .cart {
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            background: rgb(249, 228, 148);
+            border-radius: 25% 0 0 0;
+            transition: 0.3s;
+            font-size: 1em;
+
+            &:hover { background-color: rgb(236, 210, 104); }
+          }
+
+        .overlay {
+          top: 0;
+          left: 0;
+          background-color: rgba(0, 0, 0, 0.7);
+          z-index: 100;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
