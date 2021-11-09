@@ -1,0 +1,13 @@
+.shopping-cart {
+  top: 70px;
+  right: 0;
+  z-index: 10;
+  border-radius: 0 0 0.6rem 0.6rem;
+
+  .remove {
+    cursor: pointer;
+    transition: 1s;
+
+    &:hover { color: black !important; }
+  }
+}

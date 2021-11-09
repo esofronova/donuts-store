@@ -1,0 +1,8 @@
+.welcome {
+  background: url("https://js-beginners.github.io/filter-project/img/headerBcg.jpeg") center/cover fixed no-repeat;
+  min-height: 45em;
+
+  @media screen and (max-width: 576px) { background-attachment: scroll; }
+
+  h1 { font-size: 3.5em; }
+}

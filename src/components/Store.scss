@@ -1,0 +1,39 @@
+.store {
+  background-color: #eee;
+  
+  .item {
+    .img-container {
+      height: 15em;
+
+      img { transition: 1s ease-in-out; 
+      
+        &:hover {
+          width: 115% !important;
+          height: 115% !important;
+          margin-left: -5%;
+          margin-top: -5%;
+        }
+      }
+    }
+
+      .cart {
+        right: 0;
+        bottom: 0;
+        z-index: 3;
+        background: rgb(249, 228, 148);
+        border-radius: 25% 0 0 0;
+        transition: 0.3s;
+        font-size: 1em;
+
+        &:hover { background-color: rgb(236, 210, 104); }
+      }
+
+    .overlay {
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 100;
+      cursor: pointer;
+    }
+  }
+}

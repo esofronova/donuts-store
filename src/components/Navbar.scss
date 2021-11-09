@@ -1,0 +1,16 @@
+.navbar {
+  z-index: 10;
+
+  .logo { cursor: pointer; }
+
+  a {
+    box-shadow: none;
+
+    &:hover { color: black !important; }
+  }
+
+  .fixed {
+    position: fixed;
+    right: 1em;
+  }
+}
