@@ -3,32 +3,22 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './Store.scss';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container } from 'react-bootstrap';
+
+export let items, setItems;
 
 export default function Store() {
 
-  let [items, setItems] = useState(storeItems);
+  [items, setItems] = useState(storeItems);
   let [filter, setFilter] = useState('All');
   let [overlayInd, setOverlayInd] = useState(null);
-
-  let itemsArray = [];
-  let total = 0;
-  items.forEach((item) => {
-    if (item.isAdded === true) {
-      itemsArray.push(item);
-      total += item.price
-    };
-  });
 
   return (
     <>
       <div className="store py-5" id="store">
         <Container>
           <h1 className="text-center mb-5">Our <b className="text-pink">Store</b></h1>
-          <div
-            // className="flex-column flex-md-row justify-content-center mb-4 px-3"
-            className="d-flex flex-column flex-md-row justify-content-center mb-4 px-3"
-          >
+          <div className="d-flex flex-column flex-md-row justify-content-center mb-4 px-3">
             {buttons.map((item, index) => {
               return (
                 <button

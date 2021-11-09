@@ -1,8 +1,6 @@
 import { Navbar, Nav } from 'react-bootstrap';
 import { links } from '../data';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-// import { itemsArray } from '../App';
+import './Navbar.scss';
 
 export default function NavBar() {
 
@@ -24,13 +22,6 @@ export default function NavBar() {
             );
           })}
         </Nav>
-        {/* <button
-            className="checkout btn hovered border border-dark blured"
-            onClick={() => { document.querySelector('.shopping-cart').classList.toggle("d-none") }}
-          >
-            <FontAwesomeIcon icon={faShoppingCart} />
-            <span className="ms-2">{itemsArray.length + (itemsArray.length === 1 ? ' item' : ' items') + ' - $' + total}</span>
-          </button> */}
       </Navbar.Collapse>
     </Navbar>
   );

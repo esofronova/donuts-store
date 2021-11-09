@@ -1,6 +1,5 @@
 .donuts-store {
   font-family: "Kaushan Script";
-  top: 0;
 
   .text-pink { color: #ef7998 !important; }
 
@@ -12,5 +11,5 @@
     }
   }
 
-  a, button {  transition: 0.3s; }
+  a, button {  transition: 0.3s; box-shadow: none !important; }
 }

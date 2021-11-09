@@ -1,13 +1,16 @@
-.shopping-cart {
-  top: 70px;
+.checkout {
   right: 0;
   z-index: 10;
-  border-radius: 0 0 0.6rem 0.6rem;
+  transition: 0.7s;
 
-  .remove {
-    cursor: pointer;
-    transition: 1s;
+  .shopping-cart {
+    border-radius: 0 0 0.6rem 0.6rem;
 
-    &:hover { color: black !important; }
+    .remove {
+      cursor: pointer;
+      transition: 1s;
+  
+      &:hover { color: black !important; }
+    }
   }
 }
