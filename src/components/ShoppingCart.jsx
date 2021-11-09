@@ -4,29 +4,23 @@ import { items, setItems } from './Store';
 import './ShoppingCart.scss';
 import { useState } from 'react';
 
+export let itemsInCart, setItemsInCart, total, setTotal;
+
 export default function ShoppingCart() {
 
-  let itemsArray = [];
-  let total = 0;
-  items.forEach((item) => {
-    if (item.isAdded === true) {
-      itemsArray.push(item);
-      total += item.price
-    };
-  });
+  [itemsInCart, setItemsInCart] = useState(items.filter(item => item.isAdded ));
+  let total = itemsInCart.reduce((a, b) => a += b.price, 0);
 
   let [cartExpanded, setCartExpanded] = useState(false);
   let [scrolled, setScrolled] = useState(false);
+  let [screenSize, setScreenSize] = useState(window.innerWidth);
 
   window.onscroll = () => {
-    if (window.scrollY > 50) {
-      setScrolled(true)
-    } else {
-      setScrolled(false);
-    };
-
+    setScrolled(window.scrollY > 50 ? true : false);
     setCartExpanded(false);
   };
+
+  window.onresize = () => setScreenSize(window.innerWidth);
 
   return (
     <>
@@ -39,11 +33,12 @@ export default function ShoppingCart() {
           onClick={() => setCartExpanded(!cartExpanded)}
         >
           <FontAwesomeIcon icon={faShoppingCart} />
-          <span className="ms-2">{itemsArray.length + (itemsArray.length === 1 ? ' item' : ' items') + ' - $' + total}</span>
+          <span className={"ms-2 " + (screenSize < 576 ? "d-none" : "")} 
+          >{itemsInCart.length + (itemsInCart.length === 1 ? ' item' : ' items') + ' - $' + total}</span>
         </button>
 
         <div className={"shopping-cart p-4 bg-white " + (cartExpanded ? "" : "d-none")}>
-          {itemsArray.map((item, index) => {
+          {itemsInCart.map((item, index) => {
             return (
               <div className="d-flex justify-content-between align-items-center mb-4" key={index}>
                 <div className="centered px-4">
@@ -56,12 +51,9 @@ export default function ShoppingCart() {
                 <div className="centered px-4 fs-5 remove text-pink">
                   <FontAwesomeIcon icon={faTrash}
                     onClick={() => {
-                      items.forEach((thing) => {
-                        if (thing.name === item.name && thing.photo === item.photo && thing.price === item.price) {
-                          thing.isAdded = !thing.isAdded;
-                          setItems([...items]);
-                        };
-                      });
+                      item.isAdded = false;
+                      setItems([...items]);
+                      setItemsInCart(items.filter(item => item.isAdded ));
                     }}
                   />
                 </div>
@@ -76,11 +68,10 @@ export default function ShoppingCart() {
             <button
               className="btn border border-2 border-dark w-100 me-3 fs-5 hovered p-1"
               onClick={() => {
-                items.forEach((item) => {
-                  item.isAdded = item.isAdded === true ? false : false;
-                });
+                items.forEach((item) => { item.isAdded = false; });
                 setItems([...items]);
-                document.querySelector('.shopping-cart').classList.toggle("d-none");
+                setItemsInCart(items.filter(item => item.isAdded ));
+                setCartExpanded(false);
               }}
             >Clear Cart</button>
             <button className="btn border border-2 border-dark hovered w-100 fs-5 p-1">Checkout</button>

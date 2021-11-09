@@ -6,7 +6,7 @@ export default function NavBar() {
 
   return (
     <Navbar expand="md" className="navbar-light donuts-nav px-5" id="navbar">
-      <div className="logo">
+      <div className="logo pointer">
         <img src="https://js-beginners.github.io/filter-project/img/logo.svg" alt="logo" />
       </div>
       <Navbar.Toggle aria-controls="collapsible-navbar" className="btn border-0 shadow-none" />

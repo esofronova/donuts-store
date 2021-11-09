@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './Store.scss';
 import { Col, Container } from 'react-bootstrap';
+import { setItemsInCart } from './ShoppingCart';
 
 export let items, setItems;
 
@@ -29,7 +30,7 @@ export default function Store() {
               );
             })}
           </div>
-          <div className="d-flex flex-wrap"> 
+          <div className="d-flex flex-wrap">
             {items.map((item, index) => {
               return (
                 <Col xs={12} md={6} lg={4}
@@ -49,11 +50,7 @@ export default function Store() {
                         onClick={() => {
                           item.isAdded = !item.isAdded;
                           setItems([...items]);
-                          let cart = document.querySelector(".shopping-cart");
-                          cart.classList.remove("d-none");
-                          setTimeout(() => {
-                            cart.classList.add("d-none");
-                          }, 1500);
+                          setItemsInCart(items.filter(item => item.isAdded ));
                         }}
                       ><FontAwesomeIcon icon={faShoppingCart} /></span>
                     </div>
